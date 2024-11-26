@@ -7,9 +7,9 @@ pipeline {
     }
     
     stages {
-        stage('Cleanup Workshop') {
+        stage('Cleanup Workspace') {
             steps {
-                cleanWs()  // Corrected the method name to lowercase
+                cleanWs() // Corrected case for cleanWs()
             }
         }
 
@@ -31,9 +31,9 @@ pipeline {
 
         stage('SonarQube Analysis') {
             steps {
-                withSonarQubeEnv(credentialsId: 'jenkins-sonarqube-token') { 
-                        sh "mvn sonar:sonar"
-                      }
+                withSonarQubeEnv('jenkins-sonarqube-token') { 
+                    sh 'mvn sonar:sonar'
+                }
             }
         }
     }
